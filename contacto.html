@@ -2,28 +2,21 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Ubicación - Tienda Principal</title>
+  <title>Ubicación - Instituto Rumiñahui</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <!-- Google Maps JS -->
-  <script async src="https://maps.googleapis.com/maps/api/js?key= tu api"></script>
-  <script type="module" src="https://unpkg.com/@googlemaps/extended-component-library@latest"></script>
-
   <!-- TailwindCSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
-    gmp-map {
+    #map {
       height: 450px;
       width: 100%;
-      display: block;
       border-radius: 1rem;
-      overflow: hidden;
       box-shadow: 0 10px 15px rgba(0,0,0,0.1);
       transition: transform 0.3s ease;
     }
-
-    gmp-map:hover {
+    #map:hover {
       transform: scale(1.01);
     }
   </style>
@@ -31,29 +24,31 @@
 <body class="bg-gradient-to-b from-blue-50 to-white font-sans min-h-screen flex flex-col items-center p-6">
 
   <header class="mb-8 text-center">
-    <h1 class="text-4xl font-extrabold text-blue-800 mb-2">Nuestra Ubicación</h1>
-    <p class="text-gray-600 text-lg">Ven a visitarnos a nuestra tienda principal</p>
+    <h1 class="text-4xl font-extrabold text-blue-800 mb-2">Nuestra Ubicacion</h1>
+    <p class="text-gray-600 text-lg">Ven a visitarnos en el Instituto Rumiñahui</p>
   </header>
 
   <!-- Mapa -->
   <section class="w-full max-w-4xl">
-    <gmp-map center="-0.331732,-78.442564" zoom="16" map-id="DEMO_MAP_ID">
-      <gmp-advanced-marker
-        position="-0.331732,-78.442564"
-        title="Tienda Principal">
-      </gmp-advanced-marker>
-    </gmp-map>
+    <div id="map"></div>
   </section>
 
-  <!-- Botón volver -->
+  <!-- Boton volver -->
   <a href="index.html" class="mt-8 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full shadow-md transition transform hover:scale-105">
     ← Volver al inicio
   </a>
 
-  <!-- Footer relajado -->
   <footer class="mt-10 text-sm text-gray-400">
-    &copy; 2025 Tienda Online. Todos los derechos reservados.
+    &copy; 2025 Tienda Online.
   </footer>
+
+  <!-- Carga el JS con la función initMap -->
+  <script src="app.js"></script>
+
+  <!-- Google Maps JS con callback a initMap -->
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=Tu_API&callback=initMap">
+  </script>
 
 </body>
 </html>
