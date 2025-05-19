@@ -107,6 +107,11 @@ function mostrarProductos(productos) {
       <h3 class="text-lg font-semibold mb-2 text-center">${producto.title}</h3>
       <p class="text-gray-600 mb-2">$${producto.price}</p>
       <button class="mt-auto bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">Agregar al carrito</button>
+      <a href="Endetalle.html?id=${producto.id}" 
+   class="mt-auto bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded block text-center">
+  Detalles
+</a>
+
     `;
     contenedorProductos.appendChild(productoDiv);
   });
@@ -118,3 +123,40 @@ document.addEventListener("DOMContentLoaded", () => {
   cargarProductos();
   cargarCategorias();
 });
+  
+//cerrar sesion
+document.addEventListener('DOMContentLoaded', () => {
+  const btnCerrarSesion = document.getElementById('btnCerrarSesion');
+  const token = localStorage.getItem('token');
+
+  if (!token) {
+    // Si no hay token, redirige al login
+    window.location.href = 'login.html';
+  } else {
+    // Muestra el botón de cerrar sesión
+    btnCerrarSesion.classList.remove('hidden');
+  }
+
+  btnCerrarSesion.addEventListener('click', () => {
+    localStorage.removeItem('token');
+    window.location.href = 'login.html';
+  });
+});
+
+//ubicacion
+function initMap() {
+  const instituto = { lat: -0.3393815, lng: -78.4397558 };
+  const map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 16,
+    center: instituto,
+  });
+  const marker = new google.maps.Marker({
+    position: instituto,
+    map: map,
+    title: "Instituto Rumiñahui",  // Tooltip clásico al pasar mouse
+  });
+}
+// Cargar el mapa al cargar la página
+window.onload = function () {
+  initMap();
+};
