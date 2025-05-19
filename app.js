@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Si no hay token, redirige al login
     window.location.href = 'login.html';
   } else {
-    // Muestra el botón de cerrar sesión
+    // Muestra el boton de cerrar sesión
     btnCerrarSesion.classList.remove('hidden');
   }
 
@@ -156,7 +156,7 @@ function initMap() {
     title: "Instituto Rumiñahui",  // Tooltip clásico al pasar mouse
   });
 }
-// Cargar el mapa al cargar la página
+// Cargar el mapa al cargar la pagina
 window.onload = function () {
   initMap();
 };
